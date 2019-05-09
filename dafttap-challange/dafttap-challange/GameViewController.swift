@@ -13,7 +13,7 @@ class GameViewController : UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var clicksLabel: UILabel!
     
-    var clicks : Int!
+    var clickCounter = ClickCounter()
     var timer : Timer!
     var timeLeft : Double!
     
@@ -21,15 +21,12 @@ class GameViewController : UIViewController {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_ : )))
         view.addGestureRecognizer(tapGesture)
-        setUpClicks()
+        clicksLabel.text = String(0)
         setUpTimer()
         // Do any additional setup after loading the view.
     }
     
-    func setUpClicks(){
-        clicks = 0
-        clicksLabel.text = String(clicks!)
-    }
+
     
     func setUpTimer(){
         timer = Timer.scheduledTimer(timeInterval: 0.01 , target: self, selector: #selector(onTimeEnds), userInfo: nil, repeats: true)
@@ -39,7 +36,7 @@ class GameViewController : UIViewController {
     func setUpAlert(){
         //todo check if it qualifies for leaderboard and display different message
         let title = "Time's up!"
-        let message = "You tapped the screen \(clicks!) times."
+        let message = "You tapped the screen \(clickCounter.click) times."
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{ action in
                 self.navigationController?.popViewController(animated: true)
@@ -55,14 +52,14 @@ class GameViewController : UIViewController {
         if timeLeft <= 0{
             timerLabel.text = "0.00 seconds left !"
             timer.invalidate()
+            print(clickCounter.timeStamp)
             setUpAlert()
         }
     }
     
     @objc func handleTap(_ tap : UITapGestureRecognizer){
         if timeLeft > 0.00 {
-            clicks += 1
-            clicksLabel.text = String(clicks!)
+            clicksLabel.text = String(clickCounter.increaseClicksByOne())
         }
     }
 }

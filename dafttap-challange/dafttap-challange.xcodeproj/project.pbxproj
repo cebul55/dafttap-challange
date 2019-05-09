@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		842DB0E72284E60D0036EB02 /* ClickCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DB0E62284E60D0036EB02 /* ClickCounter.swift */; };
 		848247152284BA670046775E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848247142284BA670046775E /* AppDelegate.swift */; };
 		848247172284BA670046775E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848247162284BA670046775E /* ViewController.swift */; };
 		8482471A2284BA670046775E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848247182284BA670046775E /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		842DB0E62284E60D0036EB02 /* ClickCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickCounter.swift; sourceTree = "<group>"; };
 		848247112284BA670046775E /* dafttap-challange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dafttap-challange.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		848247142284BA670046775E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		848247162284BA670046775E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				8482471B2284BA670046775E /* dafttap_challange.xcdatamodeld */,
 				848247292284CB130046775E /* GameViewController.swift */,
 				8482472B2284CEFC0046775E /* DaftTapNavigationController.swift */,
+				842DB0E62284E60D0036EB02 /* ClickCounter.swift */,
 			);
 			path = "dafttap-challange";
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 				8482472A2284CB130046775E /* GameViewController.swift in Sources */,
 				848247172284BA670046775E /* ViewController.swift in Sources */,
 				848247152284BA670046775E /* AppDelegate.swift in Sources */,
+				842DB0E72284E60D0036EB02 /* ClickCounter.swift in Sources */,
 				8482472C2284CEFC0046775E /* DaftTapNavigationController.swift in Sources */,
 				8482471D2284BA670046775E /* dafttap_challange.xcdatamodeld in Sources */,
 			);
