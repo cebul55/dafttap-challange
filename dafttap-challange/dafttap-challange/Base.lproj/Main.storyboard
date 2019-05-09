@@ -1,24 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eki-1h-0oH">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Dafttap Navigation Controller-->
+        <scene sceneID="Zfa-AS-Egk">
+            <objects>
+                <navigationController storyboardIdentifier="DaftTapNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eki-1h-0oH" userLabel="Dafttap Navigation Controller" customClass="DaftTapNavigationController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="CZx-tk-GYN">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="AL3-rG-fai"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YzB-he-SCj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1241" y="49"/>
+        </scene>
+        <!--DaftTap Challenge-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="dafttap_challange" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gij-TJ-mfI">
+                                <rect key="frame" x="176.5" y="426" width="61" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" title="PLAY"/>
+                                <connections>
+                                    <action selector="playButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Al-3L-sJi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gij-TJ-mfI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Mh-Hm-17n"/>
+                            <constraint firstItem="gij-TJ-mfI" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Z4u-GV-kQv"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="DaftTap Challenge" id="A8z-bh-1yU"/>
+                    <connections>
+                        <segue destination="X6s-2f-TlC" kind="show" identifier="showGameView" id="kKq-8k-oGK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-62" y="49"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="WfU-ei-TzK">
+            <objects>
+                <viewController storyboardIdentifier="GameViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="X6s-2f-TlC" customClass="GameViewController" customModule="dafttap_challange" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yD1-rw-vi2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6WN-w9-lJR">
+                                <rect key="frame" x="95.5" y="390" width="223" height="116"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="97"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="timerLabel" text="timerLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVy-HR-OtD">
+                                <rect key="frame" x="130" y="526" width="154.5" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6WN-w9-lJR" firstAttribute="centerY" secondItem="yD1-rw-vi2" secondAttribute="centerY" id="NLb-1g-ifb"/>
+                            <constraint firstItem="GVy-HR-OtD" firstAttribute="centerX" secondItem="yD1-rw-vi2" secondAttribute="centerX" id="TEd-w7-8Uz"/>
+                            <constraint firstItem="GVy-HR-OtD" firstAttribute="top" secondItem="6WN-w9-lJR" secondAttribute="bottom" constant="20" id="VhW-CP-Zhq"/>
+                            <constraint firstItem="6WN-w9-lJR" firstAttribute="centerX" secondItem="yD1-rw-vi2" secondAttribute="centerX" id="ioT-E1-SWX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8mp-bi-UHv"/>
+                    </view>
+                    <connections>
+                        <outlet property="clicksLabel" destination="6WN-w9-lJR" id="zT1-MU-qbv"/>
+                        <outlet property="timerLabel" destination="GVy-HR-OtD" id="w3T-ET-lnI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P1L-eS-xcd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="878" y="49"/>
         </scene>
     </scenes>
 </document>

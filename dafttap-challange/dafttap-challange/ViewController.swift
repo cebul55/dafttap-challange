@@ -15,6 +15,17 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func playButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "showGameView", sender: sender)
+    }
+    
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showGameView" {
+            let gameViewController : GameViewController
+            gameViewController = segue.destination as! GameViewController
+//            gameViewController.testLabel.text! = "dsa"
+        }
+    }
 }
 
