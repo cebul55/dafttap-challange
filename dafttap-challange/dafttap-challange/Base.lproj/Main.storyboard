@@ -17,6 +17,13 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="CZx-tk-GYN">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="AL3-rG-fai"/>
@@ -42,6 +49,17 @@
                                     <action selector="playButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Al-3L-sJi"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDh-L5-C3v">
+                                <rect key="frame" x="20" y="143" width="374" height="229"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="atS-1Z-UTM">
+                                    <size key="itemSize" width="374" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -52,12 +70,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="DaftTap Challenge" id="A8z-bh-1yU"/>
                     <connections>
+                        <outlet property="recordsCollectionView" destination="tDh-L5-C3v" id="Nrz-hg-rcS"/>
                         <segue destination="X6s-2f-TlC" kind="show" identifier="showGameView" id="kKq-8k-oGK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-62" y="49"/>
+            <point key="canvasLocation" x="-62.318840579710148" y="48.883928571428569"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="WfU-ei-TzK">
@@ -90,7 +109,7 @@
                         <viewLayoutGuide key="safeArea" id="8mp-bi-UHv"/>
                     </view>
                     <connections>
-                        <outlet property="clicksLabel" destination="6WN-w9-lJR" id="zT1-MU-qbv"/>
+                        <outlet property="clicksLabel" destination="6WN-w9-lJR" id="HTQ-ea-mgg"/>
                         <outlet property="timerLabel" destination="GVy-HR-OtD" id="w3T-ET-lnI"/>
                     </connections>
                 </viewController>
@@ -99,4 +118,5 @@
             <point key="canvasLocation" x="878" y="49"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
 </document>

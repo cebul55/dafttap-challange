@@ -14,23 +14,31 @@ class GameViewController : UIViewController {
     @IBOutlet weak var clicksLabel: UILabel!
     
     var clickCounter = ClickCounter()
-    var timer : Timer!
-    var timeLeft : Double!
+    var gameTimer : Timer!
+    var gameTimeLeft : Double!
+    var prepareTimer : Timer!
+    var prepareTimeLeft : Double!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_ : )))
-        view.addGestureRecognizer(tapGesture)
-        clicksLabel.text = String(0)
-        setUpTimer()
-        // Do any additional setup after loading the view.
+        clicksLabel.text = "0"
+        timerLabel.text = ""
+        setUpPrepareTimer()
     }
     
-
+    func setupTapGestureRecognizer(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_ : )))
+        view.addGestureRecognizer(tapGesture)
+    }
     
-    func setUpTimer(){
-        timer = Timer.scheduledTimer(timeInterval: 0.01 , target: self, selector: #selector(onTimeEnds), userInfo: nil, repeats: true)
-        timeLeft = 5.00
+    func setUpGameTimer(){
+        gameTimer = Timer.scheduledTimer(timeInterval: 0.01 , target: self, selector: #selector(onTimeEnds), userInfo: nil, repeats: true)
+        gameTimeLeft = 5.00
+    }
+    
+    func setUpPrepareTimer(){
+        prepareTimer = Timer.scheduledTimer(timeInterval: 0.15, target: self, selector: #selector(onPrepareTime), userInfo: nil, repeats: true)
+        prepareTimeLeft = 3.00
     }
     
     func setUpAlert(){
@@ -46,19 +54,34 @@ class GameViewController : UIViewController {
     }
     
     @objc func onTimeEnds(){
-        timeLeft -= 0.01
-        timerLabel.text = (String(format:"%.2f", timeLeft!)) + " seconds left !"
+        gameTimeLeft -= 0.01
+        timerLabel.text = (String(format:"%.2f", gameTimeLeft!)) + " seconds left !"
         
-        if timeLeft <= 0{
+        if gameTimeLeft <= 0{
             timerLabel.text = "0.00 seconds left !"
-            timer.invalidate()
+            gameTimer.invalidate()
             print(clickCounter.timeStamp)
             setUpAlert()
         }
     }
     
+    @objc func onPrepareTime(){
+        prepareTimeLeft -= 0.15
+        clicksLabel.text? = (String(format:"%.0f", prepareTimeLeft!)) + "..."
+        
+        if 0 < prepareTimeLeft && prepareTimeLeft <= 0.30 {
+            clicksLabel.text = "START!"
+        }
+        else if prepareTimeLeft <= 0{
+            prepareTimer.invalidate()
+            clicksLabel.text = "0"
+            setupTapGestureRecognizer()
+            setUpGameTimer()
+        }
+    }
+    
     @objc func handleTap(_ tap : UITapGestureRecognizer){
-        if timeLeft > 0.00 {
+        if gameTimeLeft > 0.00 {
             clicksLabel.text = String(clickCounter.increaseClicksByOne())
         }
     }
