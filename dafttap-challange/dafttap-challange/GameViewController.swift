@@ -13,11 +13,11 @@ class GameViewController : UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var clicksLabel: UILabel!
     
-    var clickCounter = ClickCounter()
-    var gameTimer : Timer!
-    var gameTimeLeft : Double!
-    var prepareTimer : Timer!
-    var prepareTimeLeft : Double!
+    private var clickCounter = ClickCounter()
+    private var gameTimer : Timer!
+    private var gameTimeLeft : Double!
+    private var prepareTimer : Timer!
+    private var prepareTimeLeft : Double!
     var recordsDataSource : RecordsDataSource!
     
     override func viewDidLoad() {
@@ -27,24 +27,23 @@ class GameViewController : UIViewController {
         setUpPrepareTimer()
     }
     
-    func setupTapGestureRecognizer(){
+   private func setupTapGestureRecognizer(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_ : )))
         view.addGestureRecognizer(tapGesture)
     }
     
-    func setUpGameTimer(){
+    private func setUpGameTimer(){
         gameTimer = Timer.scheduledTimer(timeInterval: 0.01 , target: self, selector: #selector(onTimeEnds), userInfo: nil, repeats: true)
         gameTimeLeft = 5.00
     }
     
-    func setUpPrepareTimer(){
+    private func setUpPrepareTimer(){
         prepareTimer = Timer.scheduledTimer(timeInterval: 0.15, target: self, selector: #selector(onPrepareTime), userInfo: nil, repeats: true)
         prepareTimeLeft = 3.00
     }
     
-    func setUpAlert(){
-        //todo check if it qualifies for leaderboard and display different message
-        if clickCounter.click >= recordsDataSource.getLowestRecord() || (recordsDataSource.records.count < 5 && clickCounter.click != 0 ) {
+    private func setUpAlert(){
+        if clickCounter.click >= recordsDataSource.getLowestRecordValue() || (recordsDataSource.records.count < 5 && clickCounter.click != 0 ) {
             let title = "New highscore!"
             let message = "You tapped the screen \(clickCounter.click) times.\nYour score will be displayed in record's table."
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -66,7 +65,7 @@ class GameViewController : UIViewController {
         }
     }
     
-    @objc func onTimeEnds(){
+     @objc private func onTimeEnds(){
         gameTimeLeft -= 0.01
         timerLabel.text = (String(format:"%.2f", gameTimeLeft!)) + " seconds left !"
         
@@ -77,7 +76,7 @@ class GameViewController : UIViewController {
         }
     }
     
-    @objc func onPrepareTime(){
+    @objc private func onPrepareTime(){
         prepareTimeLeft -= 0.15
         clicksLabel.text? = (String(format:"%.0f", prepareTimeLeft!)) + "..."
         
@@ -92,7 +91,7 @@ class GameViewController : UIViewController {
         }
     }
     
-    @objc func handleTap(_ tap : UITapGestureRecognizer){
+    @objc private func handleTap(_ tap : UITapGestureRecognizer){
         if gameTimeLeft > 0.00 {
             clicksLabel.text = String(clickCounter.increaseClicksByOne())
         }

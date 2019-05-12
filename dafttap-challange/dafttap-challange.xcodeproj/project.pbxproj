@@ -17,7 +17,6 @@
 		8482471F2284BA6B0046775E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8482471E2284BA6B0046775E /* Assets.xcassets */; };
 		848247222284BA6B0046775E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848247202284BA6B0046775E /* LaunchScreen.storyboard */; };
 		8482472A2284CB130046775E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848247292284CB130046775E /* GameViewController.swift */; };
-		8482472C2284CEFC0046775E /* DaftTapNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482472B2284CEFC0046775E /* DaftTapNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +32,6 @@
 		848247212284BA6B0046775E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		848247232284BA6B0046775E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		848247292284CB130046775E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		8482472B2284CEFC0046775E /* DaftTapNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaftTapNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +72,6 @@
 				848247232284BA6B0046775E /* Info.plist */,
 				8482471B2284BA670046775E /* dafttap_challange.xcdatamodeld */,
 				848247292284CB130046775E /* GameViewController.swift */,
-				8482472B2284CEFC0046775E /* DaftTapNavigationController.swift */,
 				842DB0E62284E60D0036EB02 /* ClickCounter.swift */,
 				843FC6832285FE35003BC6A8 /* RecordCollectionViewCell.swift */,
 				84658774228795C0003A9BA6 /* RecordsDataSource.swift */,
@@ -158,7 +155,6 @@
 				848247172284BA670046775E /* ViewController.swift in Sources */,
 				848247152284BA670046775E /* AppDelegate.swift in Sources */,
 				842DB0E72284E60D0036EB02 /* ClickCounter.swift in Sources */,
-				8482472C2284CEFC0046775E /* DaftTapNavigationController.swift in Sources */,
 				8482471D2284BA670046775E /* dafttap_challange.xcdatamodeld in Sources */,
 				843FC6842285FE35003BC6A8 /* RecordCollectionViewCell.swift in Sources */,
 			);

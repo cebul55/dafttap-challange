@@ -10,7 +10,7 @@ import Foundation
 
 class ClickCounter {
     var click : Int
-    let time : Date
+    private let time : Date
     var timeStamp : String {
         get{
             return setUpCurrentDate()
@@ -21,7 +21,7 @@ class ClickCounter {
         time = Date()
     }
     
-    func setUpCurrentDate() -> String{
+    private func setUpCurrentDate() -> String{
         let format = DateFormatter()
         format.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let formattedDate = format.string(from: time)

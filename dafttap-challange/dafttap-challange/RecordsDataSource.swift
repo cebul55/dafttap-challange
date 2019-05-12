@@ -12,10 +12,10 @@ import UIKit
 
 class RecordsDataSource {
     
-    let entityName = "Records"
-    let numberOfClicksKey = "numberOfClicks"
-    let gameTimeKey = "gameTime"
-    let context : NSManagedObjectContext
+    private let entityName = "Records"
+    private let numberOfClicksKey = "numberOfClicks"
+    private let gameTimeKey = "gameTime"
+    private let context : NSManagedObjectContext
     var records: [NSManagedObject] = []
     
     init(context : NSManagedObjectContext){
@@ -69,7 +69,7 @@ class RecordsDataSource {
         })
     }
     
-    func getLowestRecord() -> Int {
+    func getLowestRecordValue() -> Int {
         var lowestNumberOfCLicks = 1000000
         for record in records {
             if (record.value(forKey: numberOfClicksKey) as! Int?)! < lowestNumberOfCLicks {
@@ -82,7 +82,7 @@ class RecordsDataSource {
         return lowestNumberOfCLicks
     }
     
-    func removeLowestRecord() {
+    private func removeLowestRecord() {
         //removes lowest and oldest record if more than one has the same numberOfClick
         let recordToDelete = records[records.count - 1]
         let index = records.lastIndex(of: recordToDelete)
