@@ -18,7 +18,6 @@
 		848247222284BA6B0046775E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848247202284BA6B0046775E /* LaunchScreen.storyboard */; };
 		8482472A2284CB130046775E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848247292284CB130046775E /* GameViewController.swift */; };
 		8482472C2284CEFC0046775E /* DaftTapNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482472B2284CEFC0046775E /* DaftTapNavigationController.swift */; };
-		84A9DC6F2285F5DB00C5F11E /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9DC6E2285F5DA00C5F11E /* RecordsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +34,6 @@
 		848247232284BA6B0046775E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		848247292284CB130046775E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		8482472B2284CEFC0046775E /* DaftTapNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaftTapNavigationController.swift; sourceTree = "<group>"; };
-		84A9DC6E2285F5DA00C5F11E /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +76,6 @@
 				848247292284CB130046775E /* GameViewController.swift */,
 				8482472B2284CEFC0046775E /* DaftTapNavigationController.swift */,
 				842DB0E62284E60D0036EB02 /* ClickCounter.swift */,
-				84A9DC6E2285F5DA00C5F11E /* RecordsViewController.swift */,
 				843FC6832285FE35003BC6A8 /* RecordCollectionViewCell.swift */,
 				84658774228795C0003A9BA6 /* RecordsDataSource.swift */,
 			);
@@ -158,7 +155,6 @@
 			files = (
 				8482472A2284CB130046775E /* GameViewController.swift in Sources */,
 				84658775228795C0003A9BA6 /* RecordsDataSource.swift in Sources */,
-				84A9DC6F2285F5DB00C5F11E /* RecordsViewController.swift in Sources */,
 				848247172284BA670046775E /* ViewController.swift in Sources */,
 				848247152284BA670046775E /* AppDelegate.swift in Sources */,
 				842DB0E72284E60D0036EB02 /* ClickCounter.swift in Sources */,

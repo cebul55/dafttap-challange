@@ -20,15 +20,12 @@ class RecordsDataSource {
     
     init(context : NSManagedObjectContext){
         self.context = context
+        self.fetchData()
+        self.sortData()
     }
     
-    func saveData(numberOfClicks: Int, gameTime: Date){
+    func saveData(numberOfClicks: Int, gameTime: String){
         //only invoked after checking that score is better than the lowest one keeped.
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-//            return
-//        }
-//        let context = appDelegate.persistentContainer.viewContext
-        
         let entity = NSEntityDescription.entity(forEntityName: entityName, in: context )
         let newRecord = NSManagedObject(entity: entity!, insertInto: context)
         newRecord.setValue(gameTime, forKeyPath: gameTimeKey)
@@ -40,6 +37,7 @@ class RecordsDataSource {
             }
             try context.save()
             records.append(newRecord)
+            self.sortData()
         } catch {
             print("Failed saving")
         }
@@ -48,11 +46,6 @@ class RecordsDataSource {
     }
     
     func fetchData(){
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-//            return
-//        }
-//        let context = appDelegate.persistentContainer.viewContext
-        
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         
         do {
@@ -62,6 +55,22 @@ class RecordsDataSource {
         }
     }
     
+    func sortData(){
+        records.sort(by: {
+            if ($0.value(forKey: numberOfClicksKey) as! Int?)! == ($1.value(forKey: numberOfClicksKey) as! Int?)!
+            {
+                let format = DateFormatter()
+                format.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                let date1 = format.date(from: ($0.value(forKey: gameTimeKey) as! String?)! )
+                let date2 = format.date(from: ($1.value(forKey: gameTimeKey) as! String?)! )
+                return date1! > date2!
+            }
+            else {
+                return ($0.value(forKey: numberOfClicksKey) as! Int?)! > ($1.value(forKey: numberOfClicksKey) as! Int?)!
+            }
+        })
+    }
+    
     func getLowestRecord() -> Int {
         var lowestNumberOfCLicks = 1000000
         for record in records {
@@ -69,22 +78,27 @@ class RecordsDataSource {
                 lowestNumberOfCLicks = (record.value(forKey: numberOfClicksKey) as! Int?)!
             }
         }
+        if records.count == 0 {
+            return 0
+        }
         return lowestNumberOfCLicks
     }
     
     func removeLowestRecord() {
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-//            return
+        //removes lowest and oldest record if more than one has the same numberOfClick
+//        var tmpRecords : [NSManagedObject:Date] = [:]
+//        for record in records {
+//            if (record.value(forKey: numberOfClicksKey) as! Int?)! == getLowestRecord() {
+//                context.delete(record)
+//                let index = records.firstIndex(of: record)
+//                records.remove(at: index!)
+//                return
+//            }
 //        }
-//        let context = appDelegate.persistentContainer.viewContext
-        for record in records {
-            if (record.value(forKey: numberOfClicksKey) as! Int?)! == getLowestRecord() {
-                context.delete(record)
-                let index = records.firstIndex(of: record)
-                records.remove(at: index!)
-                return
-            }
-        }
+        let recordToDelete = records[records.count - 1]
+        let index = records.lastIndex(of: recordToDelete)
+        context.delete(recordToDelete)
+        records.remove(at: index!)
     }
 
 }

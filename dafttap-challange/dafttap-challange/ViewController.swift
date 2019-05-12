@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var recordsCollectionView: UICollectionView!
     let reuseIdentifier = "RecordCell"
-    var records: [NSManagedObject] = []
+    //var records: [NSManagedObject] = []
     var recordsDataSource : RecordsDataSource!
     
     override func viewDidLoad() {
@@ -28,8 +28,8 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        recordsDataSource.fetchData()
-        recordsDataSource.saveData(numberOfClicks: 500, gameTime: Date())
+        //recordsDataSource.fetchData()
+        //recordsDataSource.saveData(numberOfClicks: 500, gameTime: Date())
         print("Print section")
         print(recordsDataSource.getLowestRecord())
         print(recordsDataSource.records)
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         if segue.identifier == "showGameView" {
             let gameViewController : GameViewController
             gameViewController = segue.destination as! GameViewController
-//            gameViewController.testLabel.text! = "dsa"
+            gameViewController.recordsDataSource = recordsDataSource
         }
     }
     
@@ -65,11 +65,11 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegate 
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return records.count
+        return recordsDataSource.records.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let record = records[indexPath.row]
+        let record = recordsDataSource.records[indexPath.row]
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? RecordCollectionViewCell else {
             return RecordCollectionViewCell()
         }
