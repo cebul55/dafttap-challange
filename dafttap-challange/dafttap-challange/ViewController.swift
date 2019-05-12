@@ -13,6 +13,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var recordsCollectionView: UICollectionView!
     let reuseIdentifier = "RecordCell"
+    let numberOfClicksKey = "numberOfClicks"
+    let gameTimeKey = "gameTime"
     //var records: [NSManagedObject] = []
     var recordsDataSource : RecordsDataSource!
     
@@ -28,8 +30,8 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //recordsDataSource.fetchData()
-        //recordsDataSource.saveData(numberOfClicks: 500, gameTime: Date())
+        recordsDataSource.fetchData()
+        recordsDataSource.sortData()
         print("Print section")
         print(recordsDataSource.getLowestRecord())
         print(recordsDataSource.records)
@@ -60,9 +62,9 @@ class ViewController: UIViewController {
 
 extension ViewController : UICollectionViewDataSource, UICollectionViewDelegate {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 1
+//    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return recordsDataSource.records.count
@@ -74,11 +76,18 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegate 
             return RecordCollectionViewCell()
         }
         
-        cell.label.text = record.value(forKeyPath:"gameTime") as? String
+        cell.label.text = record.value(forKeyPath: numberOfClicksKey) as? String
         
         return cell
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if let flowLayout = self.recordsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.itemSize = CGSize(width: self.recordsCollectionView.bounds.width, height: self.recordsCollectionView.bounds.height / 5)
+        }
+    }
     
 }
 

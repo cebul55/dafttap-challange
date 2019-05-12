@@ -44,7 +44,7 @@ class GameViewController : UIViewController {
     
     func setUpAlert(){
         //todo check if it qualifies for leaderboard and display different message
-        if clickCounter.click >= recordsDataSource.getLowestRecord() {
+        if clickCounter.click >= recordsDataSource.getLowestRecord() || (recordsDataSource.records.count < 5 && clickCounter.click != 0 ) {
             let title = "New highscore!"
             let message = "You tapped the screen \(clickCounter.click) times.\nYour score will be displayed in record's table."
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -73,7 +73,6 @@ class GameViewController : UIViewController {
         if gameTimeLeft <= 0{
             timerLabel.text = "0.00 seconds left !"
             gameTimer.invalidate()
-            print(clickCounter.timeStamp)
             setUpAlert()
         }
     }
@@ -97,5 +96,11 @@ class GameViewController : UIViewController {
         if gameTimeLeft > 0.00 {
             clicksLabel.text = String(clickCounter.increaseClicksByOne())
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        prepareTimer.invalidate()
+        gameTimer?.invalidate()
     }
 }

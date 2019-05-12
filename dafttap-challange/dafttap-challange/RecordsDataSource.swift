@@ -41,8 +41,6 @@ class RecordsDataSource {
         } catch {
             print("Failed saving")
         }
-        print("Records: ")
-        print(records)
     }
     
     func fetchData(){
@@ -86,15 +84,6 @@ class RecordsDataSource {
     
     func removeLowestRecord() {
         //removes lowest and oldest record if more than one has the same numberOfClick
-//        var tmpRecords : [NSManagedObject:Date] = [:]
-//        for record in records {
-//            if (record.value(forKey: numberOfClicksKey) as! Int?)! == getLowestRecord() {
-//                context.delete(record)
-//                let index = records.firstIndex(of: record)
-//                records.remove(at: index!)
-//                return
-//            }
-//        }
         let recordToDelete = records[records.count - 1]
         let index = records.lastIndex(of: recordToDelete)
         context.delete(recordToDelete)
